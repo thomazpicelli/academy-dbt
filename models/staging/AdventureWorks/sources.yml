@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: adventureworks
+    description: banco de dados da Adventure Works
+    schema: adventureworks
+    tables:
+      - name: customer
+        description: tabela de cliente
+        columns:
+          - name: customerid
+            description: chave primária do cliente
+            tests:
+              - unique
+              - not_null
+        columns:
+          - name: personid
+            description: chave extrangeira da pessoa-cliente
+      - name: person
+        description: tabela de pessoa
+        columns:
+          - name: businessentityID
+            description: chave primária da pessoa
+            tests:
+              - unique
+              - not_null
+          - name: firstname
+            description: Primeiro nome do cliente
+          - name: lastname
+            description: último nome do cliente              
+      - name: personcreditcard
+        description: cartão de crédito do cliente
+        columns:
+          - name: businessentityID
+            description: chave primária da do relacionamento cliente-cartão
+          - name: CreditCardid
+            description: chave extrangeira do cartão de crédito do cliente
+      - name: creditcard
+        description: cartão de crédito
+        columns:
+          - name: creditcardid
+            description: chave primária do cartão
+          - name: Cardtype
+            description: tipo do cartão de crédito
+          - name: CardNumber
+            description: Numero do cartão de crédito
+
