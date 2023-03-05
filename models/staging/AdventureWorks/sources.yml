@@ -44,4 +44,124 @@ sources:
             description: tipo do cartão de crédito
           - name: CardNumber
             description: Numero do cartão de crédito
-
+      - name: salesorderheader
+        description: tabela de vendas de produtos
+        columns:
+          - name: SalesOrderID
+            description: chave primária da venda
+          - name: BusinessEntityID
+            description: chave estrangeira da pessoa
+          - name: OrderDate
+            description: data da venda
+          - name: DueDate
+            description: data limite de entrega da venda
+          - name: status
+            description: status da venda
+          - name: CreditCardID
+            description: id do cartão de crédito
+      - name: salesorderdetail
+        description: tabela de vendas de produtos detalhada
+        columns:
+          - name: SalesOrderID
+            description: chave estrangeira da venda
+          - name: SalesOrderDetailID
+            description: chave primaria da venda detalhada
+          - name: OrderQty
+            description: quantidade vendida
+          - name: ProductID
+            description: id do produto
+          - name: SpecialOfferID
+            description: Id do desconto - oferta
+          - name: UnitPrice
+            description: Preco unitaria da do item da venda
+          - name: UnitPriceDiscount
+            description: Preco unitaria da do item da venda desconto
+      - name: product
+        description: tabela de produto
+        columns:
+          - name: ProductID
+            description: chave primaria do produto
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: mome do produto
+      - name: salesorderheadersalesreason
+        description: tabela motivo da venda
+        columns:
+          - name: SalesReasonID
+            description: chave primaria do motivo
+            tests:
+              - unique
+              - not_null
+          - name: SalesOrderID
+            description: chave estrangeira da venda
+      - name: salesreason
+        description: tabela motivo da venda
+        columns:
+          - name: SalesReasonID
+            description: chave primaria do motivo
+            tests:
+              - unique
+              - not_null
+          - name: Name
+            description: motivo
+          - name: ReasonType
+            description: Tipo do motivo
+      - name: address
+        description: endereço do cliente
+        columns:
+          - name: addressID
+            description: chave primaria do endereco
+            tests:
+              - unique
+              - not_null
+          - name: city
+            description: cidade do cliente         
+          - name: stateprovinceID
+            description: ID do estado
+      - name: stateprovince
+        description: estado do endereço
+        columns:
+          - name: stateprovinceID
+            description: chave primaria do estado
+            tests:
+              - unique
+              - not_null
+          - name: StateProvinceCode
+            description: codigo do estado
+          - name: name
+            description: nome do estado
+          - name: countryregioncode
+            description: chave estrangeira da regiao            
+      - name: countryregion
+        description: regiao do pais
+        columns:
+          - name: countryregioncode
+            description: chave primaria da regiao
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: nome da regiao
+      - name: specialofferproduct
+        description: tabela de ofertas produto
+        columns:
+          - name: specialofferid
+            description: chave primaria da promocao
+            tests:
+              - unique
+              - not_null
+          - name: productid
+            description: id do produto
+      - name: specialoffer
+        description: tabela de ofertas
+        columns:
+          - name: specialofferid
+            description: chave primaria da promocao
+            tests:
+              - unique
+              - not_null
+          - name: type
+            description: tipo oferta
+            
