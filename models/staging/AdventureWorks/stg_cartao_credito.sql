@@ -10,7 +10,8 @@ with
                 ,cast(CardNumber            as string) as numero_cartao
         from {{source('adventureworks','creditcard')}}
     )
-SELECT  a.id_cartao_credito
+SELECT  a.id_pessoa
+        ,a.id_cartao_credito
         ,b.numero_cartao
         ,b.tipo_cartao_credito
 FROM pessoa_cartao a

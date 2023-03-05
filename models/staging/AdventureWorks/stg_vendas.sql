@@ -4,7 +4,9 @@ with
                 ,cast(OrderDate             as timestamp)   as dt_venda
                 ,cast(DueDate               as timestamp)   as dt_limite_entrega
                 ,cast(status                as string)      as status
-                ,cast(CreditCardID          as int)         as CreditCardID
+                ,cast(CustomerID                as int)         as id_cliente                
+                ,cast(CreditCardID          as int)         as id_cartao_credito
+                ,cast(shiptoaddressid       as int)         as id_endereco
         from {{source('adventureworks','salesorderheader')}}
     ),
     
@@ -24,7 +26,9 @@ SELECT  distinct
         ,a.dt_venda
         ,a.dt_limite_entrega
         ,a.status
-        ,a.CreditCardID
+        ,a.id_cartao_credito
+        ,a.id_cliente
+        ,a.id_endereco
         ,b.id_venda_detalhada
         ,b.qt_vendida
         ,b.id_produto
